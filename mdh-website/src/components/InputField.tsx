@@ -1,18 +1,16 @@
-interface InputFieldProps {
-  type: string;
-  placeholder: string;
-  name: string;
-  required?: boolean;
-}
+import * as React from "react";
 
-export default function InputField({ type, placeholder, name, required }: InputFieldProps) {
+type Props = React.InputHTMLAttributes<HTMLInputElement>;
+
+export default function InputField({ className = "", ...props }: Props) {
   return (
     <input
-      type={type}
-      placeholder={placeholder}
-      name={name}
-      required={required}
-      className="w-full p-3 rounded-md bg-blush-beige border border-rose-gold text-charcoal placeholder-warm-mocha focus:outline-none focus:ring-2 focus:ring-soft-gold"
+      {...props}
+      className={[
+        "w-full p-3 rounded-md bg-[#EDD7D2] border border-[#D8A29A] text-[#3B3A39]",
+        "placeholder-[#8A7665] focus:outline-none focus:ring-2 focus:ring-[#CBB279]",
+        className,
+      ].join(" ")}
     />
   );
 }
